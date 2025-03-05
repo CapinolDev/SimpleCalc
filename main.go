@@ -73,6 +73,7 @@ func main() {
 		fmt.Println("Select shape:")
 		fmt.Println("1 - Square")
 		fmt.Println("2 - Triangle")
+		fmt.Println("3 - Rectangle")
 		scanner.Scan()
 		shape, _ := strconv.ParseInt(scanner.Text(), 10, 64)
 		if shape == 1 {
@@ -139,7 +140,35 @@ func main() {
 
 			}
 		}
+		if shape == 3 {
+			fmt.Println("Select operation: ")
+			fmt.Println("1 - Circumference")
+			fmt.Println("2 - Area")
+			scanner.Scan()
+			operation, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+			if operation == 1 {
+				fmt.Println("Input side a: ")
+				scanner.Scan()
+				sideA, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+				fmt.Println("Input side b: ")
+				scanner.Scan()
+				sideB, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+				circumference := sideA*2 + sideB*2
+				fmt.Printf("The circumference of the rectangle is %v", circumference)
+			}
+			if operation == 2 {
+				fmt.Println("Input side a: ")
+				scanner.Scan()
+				sideA, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+				fmt.Println("Input side b: ")
+				scanner.Scan()
+				sideB, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+				area := sideA * sideB
+				fmt.Printf("The area is %v", area)
 
+			}
+
+		}
 	}
 
 }
