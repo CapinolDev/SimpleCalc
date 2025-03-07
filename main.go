@@ -74,11 +74,12 @@ func main() {
 		fmt.Println("1 - Square")
 		fmt.Println("2 - Triangle")
 		fmt.Println("3 - Rectangle")
+		fmt.Println("4 - Circle")
 		scanner.Scan()
 		shape, _ := strconv.ParseInt(scanner.Text(), 10, 64)
 		if shape == 1 {
 			fmt.Println("Which operation?")
-			fmt.Println("1 - Calculate circumference")
+			fmt.Println("1 - Calculate perimeter")
 			fmt.Println("2 - Calculate area")
 			scanner.Scan()
 			operation, _ := strconv.ParseInt(scanner.Text(), 10, 64)
@@ -87,7 +88,7 @@ func main() {
 				scanner.Scan()
 				sideLenght, _ := strconv.ParseInt(scanner.Text(), 10, 64)
 				circumference := sideLenght * 4
-				fmt.Printf("The circumference is: %d", circumference)
+				fmt.Printf("The perimeter is: %d", circumference)
 			}
 			if operation == 2 {
 				fmt.Println("What's the side lenght?")
@@ -99,7 +100,7 @@ func main() {
 		}
 		if shape == 2 {
 			fmt.Println("Which operation?")
-			fmt.Println("1 - Calculate circumference")
+			fmt.Println("1 - Calculate perimeter")
 			fmt.Println("2 - Calculate area")
 			fmt.Println("3 - Calculate height (two sides need to be of equal lenght)")
 			scanner.Scan()
@@ -115,7 +116,7 @@ func main() {
 				scanner.Scan()
 				thirdSideLenght, _ := strconv.ParseInt(scanner.Text(), 10, 64)
 				circumference := firstSideLenght + secondSideLenght + thirdSideLenght
-				fmt.Printf("The circumference is: %v", circumference)
+				fmt.Printf("The perimeter is: %v", circumference)
 
 			}
 			if operation == 2 {
@@ -142,7 +143,7 @@ func main() {
 		}
 		if shape == 3 {
 			fmt.Println("Select operation: ")
-			fmt.Println("1 - Circumference")
+			fmt.Println("1 - Perimeter")
 			fmt.Println("2 - Area")
 			scanner.Scan()
 			operation, _ := strconv.ParseInt(scanner.Text(), 10, 64)
@@ -154,7 +155,7 @@ func main() {
 				scanner.Scan()
 				sideB, _ := strconv.ParseInt(scanner.Text(), 10, 64)
 				circumference := sideA*2 + sideB*2
-				fmt.Printf("The circumference of the rectangle is %v", circumference)
+				fmt.Printf("The perimeter of the rectangle is %v", circumference)
 			}
 			if operation == 2 {
 				fmt.Println("Input side a: ")
@@ -168,6 +169,49 @@ func main() {
 
 			}
 
+		}
+		if shape == 4 {
+			fmt.Println("Choose operation:")
+			fmt.Println("1 - Circumference")
+			fmt.Println("2 - Area")
+			fmt.Println("3 - Radius")
+			scanner.Scan()
+			operation, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+			if operation == 1 {
+				fmt.Println("Input radius: ")
+				scanner.Scan()
+				radius, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+				circleCircumference := 2 * math.Pi * float64(radius)
+				fmt.Printf("The circumference is %v", circleCircumference)
+			}
+			if operation == 2 {
+				fmt.Println("Input radius: ")
+				scanner.Scan()
+				radius, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+				circleArea := math.Pi * float64(radius) * float64(radius)
+				fmt.Printf("The area of the circle is %v", circleArea)
+			}
+			if operation == 3 {
+				fmt.Println("What will you use to get the radius?")
+				fmt.Println("1 - Area ")
+				fmt.Println("2 - Circumference ")
+				scanner.Scan()
+				decision, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+				if decision == 1 {
+					fmt.Println("Input area: ")
+					scanner.Scan()
+					circleArea, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+					radius := math.Sqrt(float64(circleArea) / math.Pi)
+					fmt.Printf("The radius of the circle is %v", radius)
+				}
+				if decision == 2 {
+					fmt.Println("Input circumference: ")
+					scanner.Scan()
+					circleCircumference, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+					var radius float64 = float64(circleCircumference) / float64((math.Pi)*2)
+					fmt.Printf("The radius is %v", radius)
+				}
+			}
 		}
 	}
 
